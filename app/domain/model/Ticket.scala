@@ -9,11 +9,11 @@ case class Ticket(ticketId: TicketId, ticketHolder: UserId, seatNo: Option[Strin
 }
 
 trait TicketStatus
-case object Reserved extends TicketStatus
 /** 予約 */
-case object Rejected extends TicketStatus
+case object Reserved extends TicketStatus
 /** 落選 */
-case object Surplus extends TicketStatus
+case object Rejected extends TicketStatus
 /** 余り */
-case object Assigned extends TicketStatus
+case object Surplus extends TicketStatus
 /** 割り当て済み */
+case object Assigned extends TicketStatus

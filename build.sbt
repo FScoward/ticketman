@@ -10,6 +10,17 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
+
+  // scalikejdbc
+  "org.scalikejdbc" %% "scalikejdbc"                  % "2.4.2",
+  "org.scalikejdbc" %% "scalikejdbc-config"           % "2.4.2",
+  "org.scalikejdbc" %% "scalikejdbc-play-initializer" % "2.5.1",
+
+  // flyway
+  "org.flywaydb" %% "flyway-play" % "3.0.1",
+
+  // jdbc
+  "mysql" % "mysql-connector-java" % "6.0.3"
 )
 
