@@ -7,6 +7,7 @@ import domain.model.{ Artist, ArtistId }
 import infrastructure.ArtistRepository
 import play.api.libs.json.Json
 import play.api.mvc.{ Action, Controller }
+import utils.Id64
 /**
  * Created by Fumiyasu on 2016/09/12.
  */
@@ -16,7 +17,7 @@ class ArtistController @Inject() () extends Controller {
     request.body.validate[ArtistView].fold(
       invalid => BadRequest,
       valid => {
-        ArtistRepository.save(Artist(ArtistId(0L), valid.name))
+        ArtistRepository.save(Artist(ArtistId(Id64.nextAscId()), valid.name))
         Ok(Json.toJson(valid))
       }
     )
