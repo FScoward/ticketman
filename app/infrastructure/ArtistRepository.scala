@@ -7,16 +7,24 @@ import scalikejdbc.config._
 /**
  * Created by Fumiyasu on 2016/09/13.
  */
-object Artists extends SQLSyntaxSupport[Artist] {
-  def apply(artist: ResultName[Artist])(rs: WrappedResultSet): Artist = new Artist(ArtistId(rs.get(artist.artistId)), name = rs.get(artist.name))
-}
-object ArtistRepository {
-  DBs.setupAll()
+object ArtistRepository extends SQLSyntaxSupport[Artist] {
+  def apply(artist: ResultName[Artist])(rs: WrappedResultSet): Artist = new Artist(ArtistId(rs.get(artist.artistId)), artistName = rs.get(artist.artistName))
+  override val tableName = "ARTISTS"
+  override val columns = Seq("artist_id", "artist_name")
+
   def save(artist: Artist) = {
     DB localTx { implicit s =>
       withSQL {
-        insert.into(Artists).namedValues()
+        insert.into(ArtistRepository).columns(
+          column.artistId,
+          column.artistName
+        ).values(
+          artist.artistId.id,
+          artist.artistName
+        )
       }.update().apply()
     }
   }
+
 }
+
