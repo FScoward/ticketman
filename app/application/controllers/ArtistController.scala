@@ -17,7 +17,8 @@ class ArtistController @Inject() () extends Controller {
     request.body.validate[ArtistView].fold(
       invalid => BadRequest,
       valid => {
-        ArtistRepository.save(Artist(ArtistId(Id64.nextAscId()), valid.name))
+        val artist = Artist(ArtistId(Id64.nextAscId()), valid.name)
+        ArtistRepository.save(artist)
         Ok(Json.toJson(valid))
       }
     )

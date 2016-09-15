@@ -12,11 +12,8 @@ object ArtistRepository extends SQLSyntaxSupport[Artist] {
   override val tableName = "ARTISTS"
   override val columns = Seq("artist_id", "artist_name")
 
-  // TODO: http://scalikejdbc.org/documentation/configuration.html
-  DBs.setup(ConnectionPool.DEFAULT_NAME)
-
   def save(artist: Artist) = {
-    DB localTx { implicit s =>
+    DB localTx { implicit session =>
       withSQL {
         insert.into(ArtistRepository).columns(
           column.artistId,
