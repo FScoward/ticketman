@@ -21,6 +21,9 @@ libraryDependencies ++= Seq(
   "org.flywaydb" %% "flyway-play" % "3.0.1",
 
   // jdbc
-  "mysql" % "mysql-connector-java" % "6.0.3"
+  "mysql" % "mysql-connector-java" % "6.0.3",
+
+  // twitter4j
+  "org.twitter4j" % "twitter4j-core" % "4.0.5"
 )
 

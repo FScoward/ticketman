@@ -104,3 +104,6 @@ server.pid
 *.eml
 /dist/
 .cache
+
+### twitter4j
+twitter4j.properties

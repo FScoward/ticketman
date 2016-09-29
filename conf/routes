@@ -9,6 +9,9 @@ GET     /count                      application.controllers.CountController.coun
 # An example controller showing how to write asynchronous code
 GET     /message                    application.controllers.AsyncController.message
 
+GET     /api/v1/login               application.controllers.LoginController.login
+GET     /callback                   application.controllers.LoginController.callback
+
 POST    /api/v1/artist              application.controllers.ArtistController.create
 POST    /api/v1/live                application.controllers.LiveController.create
 POST    /api/v1/place               application.controllers.PlaceController.create

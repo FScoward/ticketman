@@ -7,7 +7,11 @@ import scalikejdbc.config._
 /**
  * Created by Fumiyasu on 2016/09/13.
  */
-object ArtistRepository extends SQLSyntaxSupport[Artist] {
+trait ArtistRepository {
+  def save(artist: Artist)
+}
+
+object ArtistRepository extends ArtistRepository with SQLSyntaxSupport[Artist] {
   def apply(artist: ResultName[Artist])(rs: WrappedResultSet): Artist = new Artist(ArtistId(rs.get(artist.artistId)), artistName = rs.get(artist.artistName))
   override val tableName = "ARTISTS"
   override val columns = Seq("artist_id", "artist_name")
